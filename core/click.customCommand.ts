@@ -8,6 +8,8 @@ export default class ClickCustomCommand {
      * @returns Promise<void>
      */
     public async click(element: string) {
+        console.log("Clicando no elemento: ", element)
         await vibe.find(element).click()
+        console.log("Elemento clicado com sucesso: ", element)
     }
 }

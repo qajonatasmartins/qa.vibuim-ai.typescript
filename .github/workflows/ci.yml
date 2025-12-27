@@ -62,7 +62,7 @@ jobs:
                   echo "HEADLESS=${{ secrets.HEADLESS}}" >> .env
 
             - name: 🧪 Executar testes
-              run: npm test
+              run: npm run test
 
             - name: 📊 Publicar resultados dos testes
               if: always()
