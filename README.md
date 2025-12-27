@@ -132,6 +132,7 @@ qa.vibuim-ai.typescript/
 - **Função**: Framework principal de automação de testes web
 - **Uso no projeto**: Utilizado para controlar o navegador, encontrar elementos, clicar, obter textos, etc.
 - **Exemplo de uso**: `vibe.find(selector).click()`, `vibe.go(url)`
+- **Requisito**: Requer Chrome/Chromium instalado no sistema (instalado automaticamente no CI/CD via `browser-actions/setup-chrome@v2`)
 
 #### Mocha (^11.7.5)
 - **Função**: Framework de testes que fornece estrutura para organizar e executar testes
@@ -157,8 +158,9 @@ qa.vibuim-ai.typescript/
 
 ### Pré-requisitos
 
-- Node.js (versão compatível com TypeScript 5.7.2)
-- npm ou yarn
+- **Node.js** (versão compatível com TypeScript 5.7.2)
+- **npm** ou **yarn**
+- **Chrome/Chromium** instalado no sistema (para execução local dos testes)
 
 ### Instalação
 
@@ -168,6 +170,30 @@ npm install
 
 **Nota**: O script `prepare` será executado automaticamente após `npm install`, inicializando o Husky e configurando os hooks Git. Consulte `INSTALACAO.md` para mais detalhes.
 
+### Instalação do Navegador (Desenvolvimento Local)
+
+Para executar os testes localmente, é necessário ter o **Chrome** ou **Chromium** instalado:
+
+#### macOS
+```bash
+# Usando Homebrew
+brew install --cask google-chrome
+# ou
+brew install chromium
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+sudo apt-get update
+sudo apt-get install -y chromium chromium-chromedriver
+```
+
+#### Windows
+- Baixe e instale o [Google Chrome](https://www.google.com/chrome/)
+- Ou instale o [Chromium](https://www.chromium.org/getting-involved/download-chromium)
+
+**Nota**: No CI/CD (GitHub Actions), o Chrome é instalado automaticamente pela action `browser-actions/setup-chrome@v2`.
+
 ### Variáveis de Ambiente
 
 Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
@@ -175,6 +201,7 @@ Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 ```env
 BASE_URL=https://exemplo.com
 PRODUCT_NAME=Nome do Produto
+HEADLESS=true  # Opcional: true para modo headless, false para ver o navegador
 ```
 
 ## 🔄 CI/CD - GitHub Actions
@@ -190,6 +217,7 @@ A pipeline de CI (`/.github/workflows/ci.yml`) executa:
    - ✅ Verificação de tipos TypeScript
 
 2. **Testes**:
+   - ✅ Instala Chrome automaticamente usando `browser-actions/setup-chrome@v2`
    - ✅ Execução de todos os testes automatizados
    - ✅ Testa em múltiplas versões do Node.js (20.x e 22.x)
 

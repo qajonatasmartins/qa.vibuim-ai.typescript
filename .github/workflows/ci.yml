@@ -52,23 +52,10 @@ jobs:
                   cache: "npm"
                   cache-dependency-path: package-lock.json
 
-            - name: 🌐 Instalar dependências do navegador
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install -y \
-                      chromium \
-                      chromium-chromedriver \
-                      libnss3 \
-                      libatk-bridge2.0-0 \
-                      libdrm2 \
-                      libxkbcommon0 \
-                      libxcomposite1 \
-                      libxdamage1 \
-                      libxfixes3 \
-                      libxrandr2 \
-                      libgbm1 || true
-                  # Tenta instalar libasound2 (opcional para headless)
-                  sudo apt-get install -y libasound2t64 || sudo apt-get install -y libasound2 || echo "libasound2 não instalado (opcional)"
+            - name: 🌐 Instalar Chrome
+              uses: browser-actions/setup-chrome@v2
+              with:
+                  chrome-version: latest
 
             - name: 📦 Instalar dependências
               run: npm ci

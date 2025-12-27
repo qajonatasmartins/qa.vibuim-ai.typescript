@@ -13,6 +13,7 @@ Pipeline de integração contínua que executa:
    - Verifica tipos TypeScript
 
 2. **Testes** (executado após lint passar):
+   - Instala Chrome automaticamente usando `browser-actions/setup-chrome`
    - Executa todos os testes do projeto
    - Testa em múltiplas versões do Node.js (20.x e 22.x)
 
@@ -70,7 +71,15 @@ Os resultados dos testes são salvos como artifacts e ficam disponíveis por 7 d
 
 1. Verifique se os secrets estão configurados corretamente
 2. Verifique se a URL base está acessível
-3. Verifique os logs do workflow para mais detalhes
+3. Verifique se o Chrome foi instalado corretamente (a action `browser-actions/setup-chrome` faz isso automaticamente)
+4. Verifique os logs do workflow para mais detalhes
+
+### Chrome/Navegador
+
+O Chrome é instalado automaticamente pela action `browser-actions/setup-chrome@v2`, que:
+- Instala a versão mais recente do Chrome
+- Configura todas as dependências necessárias
+- Funciona em modo headless por padrão (via variável `HEADLESS=true`)
 
 ### Lint falhando
 
