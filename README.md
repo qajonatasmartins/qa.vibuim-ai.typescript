@@ -289,6 +289,17 @@ A estrutura dos testes segue o padrão:
 - **`context`**: Funcionalidade que será testada (ex: "Login/Signup")
 - **`it`**: Caso de teste específico com identificação `[CT-XXX]`
 
+### Casos de Teste
+
+Todos os casos de teste criados no projeto estão documentados e organizados no [Board de Casos de Teste do GitHub](https://github.com/users/qajonatasmartins/projects/8). O board contém:
+
+- Lista completa de todos os casos de teste
+- Status de cada caso de teste
+- Organização por funcionalidade/feature
+- Rastreamento de implementação
+
+Consulte o board para visualizar todos os casos de teste disponíveis e seus status.
+
 ### Criando um Novo Teste
 
 1. **Criar seletores** em `components/[feature]/[feature].elements.ts`:
@@ -441,4 +452,5 @@ ISC
 ## 🔗 Links Úteis
 
 - [Repositório GitHub](https://github.com/qajonatasmartins/qa.vibuim-ai.typescript)
+- [Board de Casos de Teste](https://github.com/users/qajonatasmartins/projects/8) - Contém todos os casos de teste criados no projeto
 - [Issues](https://github.com/qajonatasmartins/qa.vibuim-ai.typescript/issues)

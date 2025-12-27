@@ -10,16 +10,16 @@ describe(`${process.env.PRODUCT_NAME}`, () => {
 
     context(`${process.env.PRODUCT_NAME} - Login/Signup`, () => {
 
-        before('Navigate to the login page', async () => {
+        before('Navegar para a página de login', async () => {
             await baseCustomCommand.navigateTo(process.env.BASE_URL!)
         })
 
-        it(`[CT-001] - Login/Signup - Validate title login form`, async () => {
+        it('[CT-00001] - Login/Signup - Validar o título do formulário de login', async () => {
             await clickCustomCommand.click(menuComponents.btnSignupLoginMenu)
             await expectCustomCommand.expect(ct001.titleLoginForm, await getTextCustomCommand.getText(loginComponents.txtTitleLoginForm))
         });
 
-        after('Finish test execution', async () => {
+        after('Finalizar execução do teste', async () => {
             await baseCustomCommand.finishTestExecution()
         })
     })
